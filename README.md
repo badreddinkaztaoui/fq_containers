@@ -36,7 +36,7 @@ chroot changes the apparent root directory for the current running process and i
 
 By combining these technologies, we can create lightweight, isolated environments that form the basis of containers.
 
-`I created a script that demonstrates how to create a simple container using these technologies. You can find the script here: [./CFS/setup_container.sh](./CFS/setup_container.sh)`
+- I created a script that demonstrates how to create a simple container using these technologies. You can find the script here: [./CFS/setup_container.sh](./CFS/setup_container.sh)
 
 ## 3. Evolution of Content Serving
 
