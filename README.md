@@ -36,6 +36,8 @@ chroot changes the apparent root directory for the current running process and i
 
 By combining these technologies, we can create lightweight, isolated environments that form the basis of containers.
 
+`I created a script that demonstrates how to create a simple container using these technologies. You can find the script here: [./CFS/setup_container.sh](./CFS/setup_container.sh)`
+
 ## 3. Evolution of Content Serving
 
 ### Bare Metal or Physical Servers
@@ -166,39 +168,36 @@ By default, if you run a Container without `-d`, you run in "attached mode".
 
 If you started a container in detached mode (i.e. with `-d`), you can still attach to it afterwards without restarting the Container with the following command:
 
-`docker attach CONTAINER`
-attaches you to a running Container with an ID or name of CONTAINER.
+- `docker attach CONTAINER`: attaches you to a running Container with an ID or name of CONTAINER.
 
 ### Entering interactive mode
 You can enter an interactive shell inside a running container using the following command:
-`docker run -it IMAGE /bin/bash`
-`docker start -ia CONTAINER`
-`-i` keeps STDIN open even if not attached
-`-t` allocates a pseudo-TTY
-`-a` attaches to STDIN, STDOUT, and STDERR
+- `docker run -it IMAGE /bin/bash`
+- `docker start -ia CONTAINER`
+    - `-i` keeps STDIN open even if not attached
+    - `-t` allocates a pseudo-TTY
+    - `-a` attaches to STDIN, STDOUT, and STDERR
 
 ### Stopping and Removing Containers
 To stop a running container, use the `docker stop` command:
-`docker stop CONTAINER1 CONTAINER2`
-
+- `docker stop CONTAINER1 CONTAINER2`
 To remove a container, use the `docker rm` command:
-`docker rm CONTAINER1 CONTAINER2`
-
+- `docker rm CONTAINER1 CONTAINER2`
 To stop and remove a container in one command, use the `-f` flag:
-`docker rm -f CONTAINER`
+- `docker rm -f CONTAINER`
 
 ### Removing Images
 To remove a Docker image, use the `docker rmi` command:
-`docker rmi IMAGE1 IMAGE2`
+- `docker rmi IMAGE1 IMAGE2`
 
 ### Inspecting Docker Objects
 To inspect a Docker object (image, container, volume, network), use the `docker inspect` command:
-`docker inspect OBJECT_ID`
+- `docker inspect OBJECT_ID`
 
 ### Copying Files to/from Containers
 To copy files to/from a container, use the `docker cp` command:
-`docker cp FILE CONTAINER:PATH`: Copy a file from the host to the container
-`docker cp CONTAINER:PATH FILE`: Copy a file from the container to the host
+- `docker cp FILE CONTAINER:PATH`: Copy a file from the host to the container
+- `docker cp CONTAINER:PATH FILE`: Copy a file from the container to the host
 
 ### Naming & Tagging Images and Containers
 - When running a container, you can specify a name using the `--name` flag:
@@ -208,9 +207,15 @@ To copy files to/from a container, use the `docker cp` command:
 - The tag is used to version the image, e.g., `latest`, `v1.0`, `dev`, etc.
 
 ### Pushing and Pulling Images
+Login to Docker Hub:
+- `docker login`
+Push an image to Docker Hub:
+- `docker push USERNAME/IMAGE_NAME:TAG`
+Pull an image from Docker Hub:
+- `docker pull USERNAME/IMAGE_NAME:TAG`
 
 ### Cleaning Up Docker Resources
 To clean up unused Docker resources (containers, images, volumes, networks), use the `docker system prune` command:
-`docker system prune`: Remove all unused resources
-`docker system prune -a`: Remove all unused resources, including images
-`docker system prune -fa`: Remove all unused resources without confirmation
+- `docker system prune`: Remove all unused resources
+- `docker system prune -a`: Remove all unused resources, including images
+- `docker system prune -fa`: Remove all unused resources without confirmation
